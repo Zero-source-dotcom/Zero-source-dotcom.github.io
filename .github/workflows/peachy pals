@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Peachy Pals Academy — Where Little Learners Grow</title>
+  <meta name="description" content="Peachy Pals Academy preschool — a warm, caring environment where children explore, play, and grow.">
+  <style>
+    :root{
+      --pink:#ffb6c1;
+      --accent:#ff9aa2;
+      --black:#111;
+      --white:#fff;
+      --radius:14px;
+      --max-width:1000px;
+    }
+    html,body{height:100%;margin:0;}
+    body{
+      font-family:"Times New Roman", Times, serif;
+      color:var(--black);
+      background:#fffafc;
+    }
+    a{color:var(--black);text-decoration:none;}
+    img{max-width:100%;display:block;}
+    header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:20px 0;}
+    .container{max-width:var(--max-width);margin:0 auto;padding:0 20px;}
+    .brand{display:flex;align-items:center;gap:10px;}
+    .logo{
+      width:60px;height:60px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;
+      background:var(--white);
+    }
+    .site-title{font-weight:bold;font-size:1.5rem;}
+    .tagline{font-size:0.9rem;color:#444;}
+    nav{display:flex;gap:10px;flex-wrap:wrap;}
+    nav a{padding:8px 12px;border-radius:10px;transition:background .2s;}
+    nav a:hover{background:rgba(255,154,162,0.15);}
+    section{margin-top:25px;padding:20px;background:var(--white);border-radius:var(--radius);
+      box-shadow:0 4px 15px rgba(0,0,0,0.05); opacity:0; transform:translateY(28px); transition:opacity 0.8s, transform 0.8s;}
+    section.visible{ opacity:1; transform:translateY(0);}
+    h1,h2{margin-top:0;}
+    .hero{text-align:center;background:linear-gradient(180deg,#ffe6ea,#fff);padding:40px 20px;border:none;}
+    .hero h1{font-size:2rem;margin-bottom:10px;}
+    .btn{
+      background:var(--pink);border:none;padding:10px 16px;border-radius:10px;
+      font-weight:bold;cursor:pointer;
+      transition: background 0.2s;
+      animation: btnPulse 2s infinite;
+    }
+    @keyframes btnPulse {
+      0% { box-shadow:0 0 0 0 #ffb6c144;}
+      70%{ box-shadow:0 0 0 6px #ffb6c100;}
+      100%{ box-shadow:0 0 0 0 #ffb6c100;}
+    }
+    .btn:hover{opacity:0.85; background:var(--accent);}
+    ul{margin:10px 0 0 20px;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
+    .program{background:#fff7f8;border:1px solid #ffd6dd;border-radius:10px;padding:12px;cursor:pointer; transition:transform 0.2s;}
+    .program:hover, .program.active{transform:scale(1.04);}
+    .carousel { position:relative; max-width:600px; margin:32px auto 20px; border-radius:var(--radius); overflow:hidden; box-shadow:0 4px 15px rgba(255,182,193,0.18);}
+    .carousel-slides{display:flex;transition:transform 0.5s;will-change:transform;}
+    .carousel img{width:600px; height:280px; object-fit:cover;}
+    .carousel-caption{position:absolute;bottom:0;left:0; right:0; background:rgba(255,182,193,0.75); color:var(--black);padding:10px;}
+    .carousel-button{position:absolute;top:50%;transform:translateY(-50%);background:var(--white);border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;opacity:0.7;font-size:1.5rem;}
+    .carousel-button.prev{left:8px;}
+    .carousel-button.next{right:8px;}
+    .carousel-indicators{ display:flex; gap:8px; justify-content:center;margin-top:10px;}
+    .carousel-indicators span{display:inline-block;width:10px;height:10px;background:#ffd6dd;border-radius:50%;cursor:pointer;}
+    .carousel-indicators .active{background:var(--accent);}
+    /* Hamburger menu */
+    .hamburger { display:none; flex-direction:column; justify-content:center; width:40px; height:40px; cursor:pointer; gap:6px;}
+    .hamburger span { display:block; height:4px; width:100%; background:var(--pink); border-radius:4px;}
+    @media(max-width:750px){
+      .carousel img{width:100vw; min-width:260px;}
+      .carousel{max-width:95vw;}
+    }
+    @media(max-width:600px){
+      .hero h1{font-size:1.5rem;}
+      header{flex-direction:column; align-items:flex-start;}
+      nav{ position:fixed; top:0; right:-110vw; background:var(--white); flex-direction:column; padding:30px 18px 18px 18px; height:100vh; width:220px; box-shadow:-2px 0 20px #ffd6ddaa; z-index:10; transition:right 0.3s;}
+      nav.open{ right:0;}
+      nav a{padding:15px 0; font-size:1.2rem;}
+      .hamburger {display:flex; position:absolute; right:20px; top:20px; z-index:20;}
+    }
+    /* Newsletter footer */
+    .newsletter{ margin-top:15px;}
+    .newsletter input[type=email]{padding:6px 10px; border:1px solid #ccc; border-radius:8px; width:calc(100% - 90px);}
+    .newsletter button{padding:7px 14px; margin-left:6px;}
+    .map{margin:15px 0 10px 0; border-radius:12px; overflow:hidden;min-height:180px;}
+    .testimonials{margin:15px 0;}
+    .testimonial-slider{display:flex; align-items:center;gap:10px;}
+    .testimonial{background:#ffe6ea;padding:12px 14px;border-radius:10px; min-width:0; flex:1 0 0; box-shadow:0 2px 7px #ffb6c12d;}
+    .testimonial-slider button{border:none;background:var(--accent);color:#fff; border-radius:8px;width:28px;height:28px;font-size:1.2rem;cursor:pointer;}
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="brand">
+      <div class="logo">
+        <!-- Simple peach SVG logo -->
+        <svg width="50" height="50" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grad" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stop-color="#ffd7d8"/>
+              <stop offset="1" stop-color="#ff9fae"/>
+            </linearGradient>
+          </defs>
+          <path d="M44 20c-3-8-16-8-20 0-8 0-14 10-8 22 6 12 22 14 28 0 6-14 0-22 0-22z" fill="url(#grad)" stroke="#ff7b80" stroke-width="1.2"/>
+          <path d="M36 8c2 1 3 3 3 6" stroke="#6c8a22" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div>
+        <div class="site-title">Peachy Pals Academy</div>
+        <div class="tagline">Where Little Learners Grow</div>
+      </div>
+    </div>
+    <nav id="mainNav">
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#programs">Programs</a>
+      <a href="#admissions">Admissions</a>
+      <a href="#parents">Parent Info</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="hamburger" id="hamburger" aria-label="Open navigation" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <!-- IMAGE CAROUSEL -->
+  <div class="carousel" aria-label="Photo carousel">
+    <button class="carousel-button prev" aria-label="Previous photo">&#8592;</button>
+    <div class="carousel-slides">
+      <div>
+        <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80" alt="Children painting together">
+        <div class="carousel-caption">Painting & Creativity</div>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Circle time with teacher">
+        <div class="carousel-caption">Circle Time</div>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Outdoor play">
+        <div class="carousel-caption">Outdoor Play</div>
+      </div>
+    </div>
+    <button class="carousel-button next" aria-label="Next photo">&#8594;</button>
+    <div class="carousel-indicators"></div>
+  </div>
+
+  <section id="home" class="hero">
+    <h1>Welcome to Peachy Pals Academy!</h1>
+    <p>We are a warm, playful preschool where curiosity, kindness, and early learning bloom every day. Our teachers encourage each child to explore, create, and grow in a safe and joyful space.</p>
+    <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enroll Now</button>
+  </section>
+  <section id="about">
+    <h2>About Us</h2>
+    <p>At Peachy Pals Academy, we believe that every child is unique and full of potential. Our mission is to provide a loving, inclusive environment that fosters social, emotional, cognitive, and physical development through hands-on learning and play.</p>
+    <p>Our teachers are experienced, compassionate, and committed to building positive relationships with children and families. Together, we help every child develop confidence, creativity, and a lifelong love of learning.</p>
+  </section>
+  <section id="programs">
+    <h2>Our Programs</h2>
+    <div class="grid">
+      <div class="program" tabindex="0">
+        <h3>Toddler Program (Ages 2–3)</h3>
+        <p>Focuses on sensory play, motor skills, and social interaction in a safe and engaging environment.</p>
+      </div>
+      <div class="program" tabindex="0">
+        <h3>Preschool Program (Ages 3–4)</h3>
+        <p>Encourages early literacy, creativity, and problem-solving through guided play and exploration.</p>
+      </div>
+      <div class="program" tabindex="0">
+        <h3>Pre-K Program (Ages 4–5)</h3>
+        <p>Prepares children for primary school with activities that strengthen academic and social readiness.</p>
+      </div>
+    </div>
+  </section>
+  <section id="admissions">
+    <h2>Admissions</h2>
+    <p>Enrollment at Peachy Pals Academy is open year-round depending on availability. We welcome families to visit our school, meet our teachers, and see what makes our environment special.</p>
+    <ul>
+      <li>Schedule a tour by phone or email.</li>
+      <li>Complete the enrollment form provided at the school.</li>
+      <li>Submit the child’s birth certificate and immunization records.</li>
+    </ul>
+    <p><strong>We look forward to welcoming your little one!</strong></p>
+  </section>
+  <section id="parents">
+    <h2>Parent Information</h2>
+    <p>We value strong partnerships with families and encourage open communication. Parents receive monthly newsletters, progress updates, and invitations to special school events.</p>
+    <ul>
+      <li>Operating Hours: Monday–Friday, 7:30 AM – 4:30 PM</li>
+      <li>Nutritious meals and snacks provided daily.</li>
+      <li>Regular parent–teacher meetings and open communication.</li>
+    </ul>
+    <div class="testimonials">
+      <h3>What Parents Say</h3>
+      <div class="testimonial-slider">
+        <button aria-label="Previous testimonial" id="prevTestimonial">&#8592;</button>
+        <div class="testimonial" id="testimonialText">"My child loves Peachy Pals! The staff are so caring."</div>
+        <button aria-label="Next testimonial" id="nextTestimonial">&#8594;</button>
+      </div>
+    </div>
+  </section>
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>We’d love to hear from you! Reach out to schedule a visit or ask any questions.</p>
+    <p>
+      <strong>Phone:</strong> +1 (868) 294-6471<br>
+      <strong>Email:</strong> peachypalsacademy@example.com<br>
+      <strong>Address:</strong> 123 Peach Blossom Avenue, San Fernando, Trinidad and Tobago<br>
+      <strong>Follow us:</strong> <a href="https://instagram.com/peachypalsacademy" target="_blank">Instagram</a>
+    </p>
+    <div class="map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3933.276868676185!2d-61.4589!3d10.2774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c36021b74c906a3%3A0xf023ab960077c021!2sSan%20Fernando%2C%20Trinidad%20and%20Tobago!5e0!3m2!1sen!2stt!4v1697225703004"
+        width="100%" height="180" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <form onsubmit="event.preventDefault();alert('Thank you for your message!');">
+      <label>Name:<br><input type="text" required></label>
+      <label>Email:<br><input type="email" required></label>
+      <label>Message:<br><textarea required></textarea></label>
+      <br>
+      <button class="btn" type="submit">Send Message</button>
+    </form>
+    <div class="newsletter">
+      <h3>Get Our Newsletter</h3>
+      <form onsubmit="event.preventDefault();alert('Thanks for subscribing!');">
+        <input type="email" required placeholder="Your email">
+        <button class="btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+  <footer>
+    © 2025 Peachy Pals Academy. All rights reserved.
+  </footer>
+</div>
+
+<script>
+  // Hamburger menu logic
+  const hamburger = document.getElementById('hamburger');
+  const nav = document.getElementById('mainNav');
+  hamburger.addEventListener('click', () => nav.classList.toggle('open'));
+  hamburger.addEventListener('keydown', e => {if(e.key==="Enter"){nav.classList.toggle('open')}});
+
+  // Section fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add("visible");
+    });
+  }, { threshold: 0.22 });
+  document.querySelectorAll("section").forEach(sec => observer.observe(sec));
+
+  // Image Carousel
+  const slides = document.querySelector(".carousel-slides");
+  const slideEls = document.querySelectorAll(".carousel-slides > div");
+  const prevBtn = document.querySelector(".carousel-button.prev");
+  const nextBtn = document.querySelector(".carousel-button.next");
+  const indicators = document.querySelector('.carousel-indicators');
+  let currentSlide = 0, autoTimer;
+  function showSlide(idx) {
+    currentSlide = (idx + slideEls.length) % slideEls.length;
+    slides.style.transform = "translateX(-"+ (currentSlide*100) +"%)";
+    [...indicators.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentSlide));
+    clearTimeout(autoTimer); autoTimer=setTimeout(()=>showSlide(currentSlide+1), 5250);
+  }
+  slideEls.forEach((slide, i) => slide.style.minWidth = "100%");
+  slides.style.width = (100*slideEls.length)+"%";
+  // Indicators
+  for(let i=0;i<slideEls.length;i++){
+    let dot = document.createElement("span");
+    dot.onclick = ()=>showSlide(i);
+    indicators.appendChild(dot);
+  }
+  prevBtn.onclick = ()=>showSlide(currentSlide-1);
+  nextBtn.onclick = ()=>showSlide(currentSlide+1);
+  showSlide(0);
+
+  // Program card interactive (shows more info on click)
+  document.querySelectorAll('.program').forEach(card=>{
+    card.addEventListener('click',()=> card.classList.toggle('active'));
+    card.addEventListener('keydown',e=>{if(e.key==="Enter"||e.key===" "){card.classList.toggle('active');}});
+  });
+
+  // Testimonial slider
+  const testimonialData = [
+    '"My child loves Peachy Pals! The staff are so caring."',
+    '"The programs have helped my preschooler become more confident!"',
+    '"Safe, nurturing environment—highly recommended!"'
+  ];
+  let testIdx = 0;
+  function showTestimonial(idx){
+    testIdx = (idx + testimonialData.length) % testimonialData.length;
+    document.getElementById("testimonialText").textContent = testimonialData[testIdx];
+  }
+  document.getElementById('prevTestimonial').onclick = () => showTestimonial(testIdx-1);
+  document.getElementById('nextTestimonial').onclick = () => showTestimonial(testIdx+1);
+  setInterval(()=>showTestimonial(testIdx+1), 8000);
+</script>
+</body>
+</html>
+
